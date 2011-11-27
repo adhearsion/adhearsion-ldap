@@ -5,8 +5,8 @@ require "ahn_ldap/version"
 Gem::Specification.new do |s|
   s.name        = "ahn-ldap"
   s.version     = AhnLDAP::VERSION
-  s.authors     = ["Taylor Carpenter"]
-  s.email       = ["tcarpenter@mojolingo.com"]
+  s.authors     = ["Taylor Carpenter", "Juan de Bravo", "Ben Langfeld"]
+  s.email       = ["tcarpenter@mojolingo.com", "juandebravo@gmail.com", "ben@langfeld.me"]
   s.homepage    = "http://adhearsion.com"
   s.summary     = %q{LDAP configuration for Adhearsion}
   s.description = %q{An Adhearsion Plugin providing LDAP configurability}
@@ -20,15 +20,8 @@ Gem::Specification.new do |s|
 
   # s.add_runtime_dependency %q<adhearsion>, [">= 2.0.0"]
   s.add_runtime_dependency %q<activesupport>, [">= 3.0.10"]
+  s.add_runtime_dependency "active_ldap"
 
-  s.add_development_dependency %q<bundler>, ["~> 1.0.0"]
+  s.add_development_dependency %q<bundler>, ["~> 1.0"]
   s.add_development_dependency %q<rspec>, [">= 2.5.0"]
-  s.add_development_dependency %q<ci_reporter>, [">= 1.6.3"]
-  s.add_development_dependency %q<simplecov>, [">= 0"]
-  s.add_development_dependency %q<simplecov-rcov>, [">= 0"]
-  s.add_development_dependency %q<yard>, ["~> 0.6.0"]
-  s.add_development_dependency %q<rake>, [">= 0"]
-  s.add_development_dependency %q<mocha>, [">= 0"]
-  s.add_development_dependency %q<guard-rspec>
-  #s.add_development_dependency %q<bones>
 end

@@ -1,23 +1,11 @@
-require 'simplecov'
-require 'simplecov-rcov'
-class SimpleCov::Formatter::MergedFormatter
-  def format(result)
-     SimpleCov::Formatter::HTMLFormatter.new.format(result)
-     SimpleCov::Formatter::RcovFormatter.new.format(result)
-  end
-end
-SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
-SimpleCov.start do
-  add_filter "/vendor/"
-end
-
 require 'ahn_ldap'
-require 'mocha'
 
-Dir[File.dirname(__FILE__) + "/support/**/*.rb"].each {|f| require f}
-
-RSpec.configure do |config|
-  config.mock_with :mocha
-  config.filter_run :focus => true
-  config.run_all_when_everything_filtered = true
+def reset_ahn_ldap_config
+  Adhearsion.config[:ahn_ldap].host            = nil
+  Adhearsion.config[:ahn_ldap].port            = 389
+  Adhearsion.config[:ahn_ldap].base            = ""
+  Adhearsion.config[:ahn_ldap].bind_dn         = ""
+  Adhearsion.config[:ahn_ldap].password        = ""
+  Adhearsion.config[:ahn_ldap].allow_anonymous = false
+  Adhearsion.config[:ahn_ldap].try_sasl        = false
 end

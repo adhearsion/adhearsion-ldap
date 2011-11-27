@@ -1,10 +1,17 @@
-require 'adhearsion'
-require 'active_support/dependencies/autoload'
-require 'ahn_ldap/version'
-require 'adhearsion/ldap'
+require "adhearsion"
+require "active_support/dependencies/autoload"
 
-class AhnLdapPlugin < Adhearsion::Plugin
-  init :ldap do
-    Ldap.start if AHN_CONFIG.ldap_enabled?
-  end
+begin
+  require 'active_ldap'
+rescue LoadError
+  logger.fatal "LDAP support requires the \"activeldap\" gem."
+  # Silence the abort so we don't get an ugly backtrace
+  abort ""
+end
+
+require "ahn_ldap/version"
+require "ahn_ldap/plugin"
+
+module AhnLDAP
+
 end
