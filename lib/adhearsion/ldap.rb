@@ -9,9 +9,9 @@ rescue LoadError
   abort ""
 end
 
-require "ahn_ldap/version"
-require "ahn_ldap/plugin"
+require "adhearsion/ldap/version"
+require "adhearsion/ldap/plugin"
 
-module AhnLDAP
+module Adhearsion::LDAP
 
 end
