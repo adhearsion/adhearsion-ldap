@@ -37,11 +37,12 @@ module Adhearsion
 
           private
 
-          def require_models
-            Adhearsion.config.files_from_setting("paths", "models").each do |model|
-              load model
-            end
+        def require_models
+          path = File.join(Adhearsion.config.platform.root, Adhearsion.config.adhearsion_ldap.models)
+          Dir.open(Adhearsion.config.adhearsion_ldap.models).each do |model|
+            require File.join(path, model) if model =~ /\.rb$/
           end
+        end
 
           ##
           # Open LDAP connection
