@@ -21,6 +21,7 @@ describe Adhearsion::LDAP::Plugin::Service do
   describe "when starting the LDAP connection" do
     before do
       Adhearsion.config[:adhearsion_ldap].host = "localhost"
+      Adhearsion::LDAP::Plugin::Service.any_instance.should_receive(:require_models).and_return true
     end
 
     after do
@@ -28,8 +29,7 @@ describe Adhearsion::LDAP::Plugin::Service do
     end
 
     it "should call Connection.start method with the valid parameters" do
-      Adhearsion::LDAP::Plugin::Service.should_receive(:establish_connection).with("localhost", 389, "", "", "", false, false).and_return true
-      Adhearsion.config.should_receive(:files_from_setting).with("paths", "models").and_return []
+      Adhearsion::LDAP::Plugin::Service.any_instance.should_receive(:establish_connection).with("localhost", 389, "", "", "", false, false).and_return true
       Adhearsion::Plugin.init_plugins
     end
 
