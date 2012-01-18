@@ -25,12 +25,12 @@ In your Adhearsion app configuration file, add the following values:
 
 ```ruby
 Adhearsion.config do |config|
-  config.ahn_ldap.host    = "valid-host"
-  config.ahn_ldap.port    = "valid-port".to_i # 389 by default
-  config.ahn_ldap.base    = "valid-ldap-base"
-  config.ahn_ldap.bind_dn = "valid-ldap-binding"
-  config.ahn_ldap.allallow_anonymous = true # false
-  config.ahn_ldap.try_sasl           = true # false
+  config.adhearsion_ldap.host    = "valid-host"
+  config.adhearsion_ldap.port    = "valid-port".to_i # 389 by default
+  config.adhearsion_ldap.base    = "valid-ldap-base"
+  config.adhearsion_ldap.bind_dn = "valid-ldap-binding"
+  config.adhearsion_ldap.allallow_anonymous = true # false
+  config.adhearsion_ldap.try_sasl           = true # false
 end
 ```
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe AhnLDAP do
-  
-  subject { AhnLDAP }
-  
+describe Adhearsion::LDAP do
+
+  subject { Adhearsion::LDAP }
+
   it "should be a module" do
     subject.should be_kind_of Module
   end
