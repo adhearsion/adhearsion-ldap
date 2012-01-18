@@ -29,7 +29,7 @@ module Adhearsion
 
       # Include the LDAP service in plugins initialization process
       init :adhearsion_ldap do
-        Service.new.start
+        Service.start
       end
 
     end

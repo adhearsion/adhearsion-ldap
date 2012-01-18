@@ -3,6 +3,12 @@ module Adhearsion
     class Plugin
       class Service
 
+        class << self
+          def start
+            new.start
+          end
+        end
+
         ##
         # Start LDAP connection
         def start
