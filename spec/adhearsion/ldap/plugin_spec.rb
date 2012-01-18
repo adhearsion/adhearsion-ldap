@@ -83,7 +83,7 @@ describe Adhearsion::LDAP::Plugin do
   describe "while loading plugins" do
     it "should load the init block and start the service" do
       Adhearsion::LDAP::Plugin::Service.should_receive(:start).once.and_return true
-      Adhearsion::Plugin.load
+      Adhearsion::Plugin.init_plugins
     end
   end
 end
