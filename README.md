@@ -1,22 +1,30 @@
-ahn-ldap
-========
+adhearsion-ldap
+===============
 
-ahn-ldap is an Adhearsion Plugin providing LDAP connectivity.
+adhearsion-ldap is an Adhearsion Plugin providing LDAP connectivity based on [ActiveLdap](https://github.com/activeldap/activeldap).
 
 Features
 --------
 
-* FIXME (list of features and unsolved problems)
+* Allows mapping LDAP objects into Adhearsion using ActiveRecord-like syntax.
 
 Requirements
 ------------
 
-* Adhearsion 2.0+
+* Adhearsion 2.x
+* ruby-ldap or net-ldap **Must be installed manually**
+
+adhearsion-ldap uses ActiveLdap internally, which on CRuby can use either ruby-ldap or net-ldap. Since Gemfiles don't allow specifying dependencies like that, must manually install one or the other.  See instructions below.
 
 Install
 -------
 
-Add `ahn-ldap` to your Adhearsion app's Gemfile.
+Add this to your Adhearsion app's Gemfile.
+
+```ruby
+gem 'adhearsion', '~> 2.0'
+gem 'ruby-ldap', platform: 'ruby'
+```
 
 Configuration
 -------------
@@ -25,12 +33,21 @@ In your Adhearsion app configuration file, add the following values:
 
 ```ruby
 Adhearsion.config do |config|
-  config.adhearsion_ldap.host    = "valid-host"
-  config.adhearsion_ldap.port    = "valid-port".to_i # 389 by default
-  config.adhearsion_ldap.base    = "valid-ldap-base"
-  config.adhearsion_ldap.bind_dn = "valid-ldap-binding"
-  config.adhearsion_ldap.allallow_anonymous = true # false
-  config.adhearsion_ldap.try_sasl           = true # false
+  config.adhearsion_ldap.host    = "ldap-server.example.com" # Defaults to port 389
+  config.adhearsion_ldap.base    = "dc=example,dc=com"
+  config.adhearsion_ldap.bind_dn = "uid=Manager,dc=example,dc=com"
+  config.adhearsion_ldap.password = "secret"
+end
+```
+
+As always, use `rake config:show` to see the complete list of options.
+
+Example
+-------
+
+```ruby
+class Extension < ActiveLdap::Base
+  ldap_mapping :dn_attribute => 'uid', :prefix => 'ou=Extensions', :classes => ['top', 'AsteriskUser', 'AsteriskVoiceMail']
 end
 ```
 
@@ -53,4 +70,4 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-Check [License file](https://github.com/adhearsion/ahn-ldap/blob/master/LICENSE)
+Check [License file](https://github.com/adhearsion/adhearsion-ldap/blob/master/LICENSE)
