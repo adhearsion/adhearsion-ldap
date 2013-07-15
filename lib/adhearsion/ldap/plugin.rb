@@ -19,7 +19,7 @@ module Adhearsion
           LDAP tree that must be used in the connection
         __
         bind_dn               "", :desc => <<-__
-          Specific domain name that identifies the user
+          Distinguished Name to bind as (LDAP auth)
         __
         password              "", :desc => "Password credentials"
         allow_anonymous    false, :desc => "valid values: true | false (default)"
