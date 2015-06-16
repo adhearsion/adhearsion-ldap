@@ -16,10 +16,10 @@ module Adhearsion
         host                 nil, desc: 'LDAP server host'
         port                 389, desc: 'LDAP server port', transform: ->(v) { v.to_i }
         base                  '', desc: <<-__
-          LDAP tree that must be used in the connection
+          Base DN of the LDAP tree to must be used when searching
         __
         bind_dn               '', desc: <<-__
-          Distinguished Name to bind as (LDAP auth)
+          Distinguished Name to bind as (LDAP username)
         __
         password              '', desc: 'Password credentials'
         allow_anonymous    false, desc: 'valid values: true | false (default)', transform: ->(v) { v.to_s.downcase == 'true' }
