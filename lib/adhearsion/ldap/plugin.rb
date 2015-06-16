@@ -24,7 +24,7 @@ module Adhearsion
         password              '', desc: 'Password credentials'
         allow_anonymous    false, desc: 'valid values: true | false (default)'
         try_sasl           false, desc: 'valid values: true | false (default)'
-        models 'app/ldap_models', desc: 'directory containing ActiveLdap models'
+        models      'app/models', desc: 'directory containing ActiveLdap models'
       end
 
       # Include the LDAP service in plugins initialization process
