@@ -22,8 +22,8 @@ module Adhearsion
           Distinguished Name to bind as (LDAP auth)
         __
         password              '', desc: 'Password credentials'
-        allow_anonymous    false, desc: 'valid values: true | false (default)'
-        try_sasl           false, desc: 'valid values: true | false (default)'
+        allow_anonymous    false, desc: 'valid values: true | false (default)', transform: ->(v) { v.to_s.downcase == 'true' }
+        try_sasl           false, desc: 'valid values: true | false (default)', transform: ->(v) { v.to_s.downcase == 'true' }
         models      'app/models', desc: 'directory containing ActiveLdap models'
       end
 
