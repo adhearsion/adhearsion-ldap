@@ -13,7 +13,8 @@ module Adhearsion
         # Start LDAP connection
         def start
           raise "Must supply a host argument to the LDAP configuration" if (config.host.nil? || config.host.empty?)
-          raise "Must supply a valid port to the LDAP configuration" unless config.port.is_a? Integer
+          config.port = config.port.to_i
+          raise "Must supply a valid port to the LDAP configuration" unless config.port > 0
 
           require_models
           establish_connection  config.host,
