@@ -14,7 +14,7 @@ module Adhearsion
       # for further information about the appropriate settings here.
       config :adhearsion_ldap do
         host                 nil, desc: 'LDAP server host'
-        port                 389, desc: 'LDAP server port', validator: -> { |v| v.to_i }
+        port                 389, desc: 'LDAP server port', transform: ->(v) { v.to_i }
         base                  '', desc: <<-__
           LDAP tree that must be used in the connection
         __
