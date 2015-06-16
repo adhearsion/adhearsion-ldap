@@ -16,6 +16,16 @@ Requirements
 
 adhearsion-ldap uses ActiveLdap internally, which on CRuby can use either ruby-ldap or net-ldap. Since Gemfiles don't allow specifying dependencies like that, must manually install one or the other.  See instructions below.
 
+Note that the LDAP gem you choose may require development packages for the header files. You can get them like this:
+
+```bash
+# RHEL & CentOS
+$ sudo yum install openldap-devel cyrus-sasl-devel
+
+# Debian & Ubuntu
+$ sudo apt-get install libldap2-dev libsasl2-dev
+```
+
 Install
 -------
 
